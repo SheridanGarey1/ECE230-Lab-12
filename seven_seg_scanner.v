@@ -8,37 +8,43 @@ wire [3:0] aNext;
 wire [3:0] aState;
 
 dff_scanner dffAnode0(
-    .D(anode[0]),
+    .Default(1'b1),
+    .D(aNext[0]),
     .clk(div_clock),
     .reset(reset),
     .Q(aState[0])
 );
 
 dff_scanner dffAnode1(
-    .D(anode[1]),
+    .Default(1'b0),
+    .D(aNext[1]),
     .clk(div_clock),
     .reset(reset),
-    .Q(aState[2])
+    .Q(aState[1])
 );
 
 dff_scanner dffAnode2(
-    .D(anode[2]),
+    .Default(1'b0),
+    .D(aNext[2]),
     .clk(div_clock),
     .reset(reset),
     .Q(aState[2])
 );
 
 dff_scanner dffAnode3(
-    .D(anode[3]),
+    .Default(1'b0),
+    .D(aNext[3]),
     .clk(div_clock),
     .reset(reset),
     .Q(aState[3])
 );
 
-assign anode[0] = ~aState[0] & aState[1] & aState[2] & aState[3];
-assign anode[1] = aState[0] & ~aState[1] & aState[2] & aState[3];
-assign anode[2] = aState[0] & aState[1] & ~aState[2] & aState[3];
-assign anode[3] = aState[0] & aState[1] & aState[2] & ~aState[3];
+assign aNext[0] = aState[3];
+assign aNext[1] = aState[0];
+assign aNext[2] = aState[1];
+assign aNext[3] = aState[2];
+assign anode = ~aState;
+
 
         
     

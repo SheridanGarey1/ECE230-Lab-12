@@ -19,10 +19,12 @@ assign wireclock[0] = clock;
 
 genvar i;
     generate 
-        for (i = 0; i < DIVIDE_BY; i = i + 1) begin
-            dff u0 (.reset(reset), .clock(wireclock[i]) , .D(Dout[i]), .Q(wireclock[i+1]), .NotQ(Dout[i]));
+        for (i = 1; i <= DIVIDE_BY; i = i + 1) begin
+            dff u0 (.reset(reset), .clock(wireclock[i-1]) , .D(Dout[i-1]), .Q(wireclock[i]), .NotQ(Dout[i-1]));
             end
         endgenerate    
     
-    assign div_clock = Q[DIVIDE_BY-1];
+    always @(*) begin
+        div_clock <= wireclock[DIVIDE_BY];
+    end
 endmodule

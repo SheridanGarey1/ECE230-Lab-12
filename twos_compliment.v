@@ -4,12 +4,12 @@ module twos_compliment(
 );
 
 
-wire [3:0] carry;
+wire  carry[3:0];
 
 full_adder A0(
     .A(~A[0]),
-    .B(1),
-    .Cin(0),
+    .B(1'b1),
+    .Cin(1'b0),
     .carryout(carry[0]),
     .Y(Y[0])
 );

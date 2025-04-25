@@ -8,7 +8,7 @@ module fourbitadder(
     full_adder one(
     .A(A[0]),
     .B(B[0]),
-    .Cin(0),
+    .Cin(1'b0),
     .Y(Y[0]),
     .carryout(carry[0])
     );

@@ -1,5 +1,5 @@
 module dff_scanner(
- input Default,
+    input Default,
     input D,
     input clk,
     input reset,

@@ -5,7 +5,7 @@ module math_block(
     output [3:0] AminusB
 );
 
-wire twosB;
+wire [3:0] twosB;
 
 
 twos_compliment twocomp(

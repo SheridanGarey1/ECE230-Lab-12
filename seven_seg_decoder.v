@@ -6,7 +6,7 @@ module seven_seg_decoder(
     input [3:0] anode,
     output reg [6:0] segs
 );
-reg selected_sig[3:0];
+reg [3:0] selected_sig;
 
     always@(*) begin
         case(anode)
@@ -36,7 +36,8 @@ reg selected_sig[3:0];
             12: segs = 7'b1000110;        
             13: segs = 7'b0100001;        
             14: segs = 7'b0000110;        
-            15: segs = 7'b0001110;       
+            15: segs = 7'b0001110;     
+            default: segs = 7'b1000001;
         endcase
     end
 
